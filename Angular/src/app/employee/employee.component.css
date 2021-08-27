@@ -1,0 +1,23 @@
+.bd-example {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: .5rem;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.table > * > * {
+  vertical-align: middle;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid red
+}

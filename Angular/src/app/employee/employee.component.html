@@ -1,0 +1,64 @@
+<div class="bd-example">
+  <div class="row">
+    <div class="col-4">
+      <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employee._id">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" required (change)="log(employeeForm)" class="form-control" id="name" placeholder="Name"
+            name="name" #name="ngModel" [(ngModel)]="employee.name">
+        </div>
+        <div class="form-group">
+          <label for="position">Position</label>
+          <input type="text" class="form-control" id="position" placeholder="Position" name="position"
+            #position="ngModel" [(ngModel)]="employee.position">
+        </div>
+        <div class="form-group">
+          <label for="office">Office</label>
+          <input type="text" class="form-control" id="position" placeholder="Office" name="office" #office="ngModel"
+            [(ngModel)]="employee.office">
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <input type="number" class="form-control" id="position" placeholder="Salary" name="salary" #salary="ngModel"
+            [(ngModel)]="employee.salary">
+        </div>
+        <div>
+          <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary" (click)="resetForm(employeeForm)">Reset</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Office</th>
+            <th scope="col">Salary</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of employeeService.employees; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{emp.name}}</td>
+            <td>{{emp.position}}</td>
+            <td>{{emp.office}}</td>
+            <td>{{emp.salary}}</td>
+            <td>
+              <button mat-icon-button color="primary" (click)="onEdit(emp)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="onDelete(emp._id!, employeeForm)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
