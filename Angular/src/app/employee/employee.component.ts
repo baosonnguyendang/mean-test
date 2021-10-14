@@ -138,6 +138,7 @@ export class EmployeeComponent implements OnInit {
       else {
         console.log('cassiopeia')
         console.log('caribeean')
+        console.log('casablanca')
       }
     });
   }
