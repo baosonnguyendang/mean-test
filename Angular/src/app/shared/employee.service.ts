@@ -27,8 +27,13 @@ export class EmployeeService {
     return this.http.post(this.baseURL, emp)
   }
 
-  getEmployeeList(){
-    return this.http.get(this.baseURL)
+  getEmployeeList(): Observable<Employee[]> {
+    //console.log(this.http.get(this.baseURL))
+    //co the viet la
+    return this.http.get<Employee[]>(this.baseURL)
+    //khi do ham se la
+    // getEmployeeList(): Observable<Employee[]>{}
+    //return this.http.get(this.baseURL)
   }
 
   putEmployee(emp: Employee){
