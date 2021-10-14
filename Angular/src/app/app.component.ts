@@ -10,6 +10,8 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'Angular';
+  color = 'yellow';
+  condition = false;
   // myControl = new FormControl();
   // options: string[] = ['One', 'Two', 'Three'];
   // filteredOptions?: Observable<string[]>

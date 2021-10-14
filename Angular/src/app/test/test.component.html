@@ -1,0 +1,48 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Number</mat-label>
+    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="OnHumanSelected($event)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="select(option)">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" class="form-control" type="text" formControlName="firstName">
+  </div>
+
+  <div class="form-group">
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" class="form-control" type="text" formControlName="lastName">
+  </div>
+
+  <div formGroupName="address">
+    <h2>Address</h2>
+  
+    <label for="district">District: </label>
+    <input id="district" class="form-control" type="text" formControlName="district">
+  
+    <label for="province">Province: </label>
+    <input id="province" class="form-control" type="text" formControlName="province">
+
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid">Submit</button>
+  <p>{{profileForm.status}}</p>
+
+</form>
